@@ -1,0 +1,290 @@
+* {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    background-color: #D9DED1;
+}
+
+body {
+    background-color: #D9DED1;
+    /*    margin: ;*/
+    /*移除間距 */
+    /*    overflow-x: hidden;*/
+    /* 防橫向滾 */
+
+}
+
+header {
+    background-color: #A2B7A8;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+
+}
+
+/*讓他可以有上下滑動*/
+p.auto {
+    overflow: auto;
+    max-height: 150px;
+}
+
+
+div {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    justify-content: space-between;
+
+}
+
+main {
+
+    flex-basis: 70%;
+    background-color: #D9DED1;
+}
+
+aside {
+
+    flex-basis: 30%;
+    background-color: #FCD1A0;
+}
+
+aside nav ul li a:link {
+    color: #506E66;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+}
+
+aside nav ul li a:hover {
+    background-color: #F2EADD;
+    font-size: 16px;
+    padding: 10px;
+}
+
+section::-webkit-scrollbar {
+    display: none;
+}
+
+section {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 16px;
+    justify-content: space-evenly;
+    align-items: center;
+    -ms-overflow-style: none;
+    /* IE/Edge */
+    scrollbar-width: none;
+    /* Firefox */
+
+}
+
+section article {
+    flex: 0 0 auto;
+    /*    float: left;*/
+    width: 33.33%;
+    height: 500px;
+    border-radius: 10px;
+    /*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+    /*    background-color: #f0f0f0;*/
+}
+
+#scroll-section {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 16px;
+    /*    background-color: #eee;*/
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+#scroll-section::-webkit-scrollbar {
+    display: none;
+}
+
+#scroll-section {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#scroll-section article {
+    flex: 0 0 auto;
+    /*width: 300px;
+height: 200px;*/
+    /*    background-color: #f0f0f0;*/
+    border-radius: 8px;
+    /*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+}
+
+article {
+    background-color: #506E66;
+    display: block;
+    padding: 10px 20px;
+    /*上下內側留空白*/
+    margin: 10px 1px;
+    /*外側上下留空白*/
+    width: 99%;
+    /*    height: ;*/
+    border-radius: 10px;
+    text-align: 'Noto Sans TC';
+    /*字體沒變喔*/
+    font-size: 16px;
+    align-items: right;
+}
+
+h1 {
+    color: #373E3B;
+    font-size: 50px;
+    font-family: 'Noto Serif TC', Arial, serif;
+    font-weight: bold;
+}
+
+h2 {
+    color: #F2EADD;
+    font-size: 20px;
+    font-family: 'Noto Serif TC', serif;
+    word-spacing: 1px;
+    /*字距，對英文有用*/
+
+
+}
+
+h6 {
+    font-size: 14px;
+    text-align: center;
+
+}
+
+p {
+    background-color: #F2EADD;
+    display: block;
+    padding: 10px;
+    /*上下內側留空白*/
+    margin: 10px 0px;
+    /*外側上下留空白*/
+    width: 100%;
+    border-radius: 10px;
+    font-family: 'Noto Sans TC', sans-serif;
+    /*字體沒變喔*/
+    font-size: 16px;
+    align-items: left;
+
+}
+
+footer {
+    background-color: #373E3B;
+    width: 100%;
+    padding: 30px;
+    margin: 30px 0px;
+    text-align: ;
+    tab-size: 12px;
+    color: #F2EADD;
+}
+
+
+
+.imw {
+    font-weight: bold;
+    color: #506E66;
+    /*當在<p>的時候用的important word   */
+}
+
+.highlight {
+    background-color: #FCD1A0;
+    border-radius: 20px;
+    padding: 3px 1px;
+}
+
+::maker {
+    content: url();
+}
+
+/*長條圖的設定*/
+
+.bar {
+    fill: #F2EADD;
+    cursor: pointer;
+}
+
+.bar:hover {
+    fill: #FCD1A0;
+}
+
+.tooltip {
+    position: absolute;
+    padding: 10px;
+    background-color: #A2B7A8;
+    border: 1px solid #D9DED1;
+    border-radius: 5px;
+    pointer-events: none;
+    box-shadow: 0 2px 5px #D9DED1;
+    font-size: 14px;
+    max-width: 200px;
+}
+
+img.tooltip-img {
+    width: 150px;
+    height: auto;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.axis text {
+    fill: #F2EADD;
+    /* 軸文字顏色 */
+    font-size: 15px;
+    font-family: 'Noto Serif TC', serif;
+
+}
+
+.axis path,
+.axis line {
+    stroke: #D9DED1;
+    /* 軸線、刻度線顏色 */
+}
+
+/*到這裡*/
+
+/*泡泡圖的設定*/
+#chart {
+    width: 100%;
+    height: 600px;
+}
+
+.bobootool {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    pointer-events: none;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+}
+
+/*地圖的設定*/
+.map-container {
+    width: 100%;
+    height: 90vh;
+    /* 佔螢幕90%的高度 */
+    border: none;
+}
+
+
+/*沒用?*/
+
+/*顏色參數:#F2EADD#D9DED1#A2B7A8#506E66#373E3B#FCD1A0*/
+/*思源黑體, 'Noto Sans TC',*/
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap")
+/*思源宋體, 'Noto Serif TC',*/
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif+TC&amp;display=swap")

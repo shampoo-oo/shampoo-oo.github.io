@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>hampoo-oo_home_page</title>
+    <link rel="stylesheet" type="text/css" href="home_page.css">
+    <link rel="shortcut icon" href="image_moun/zm3tb-k5iql-001.ico">
+    <!-- 顏色參數:#F2EADD#D9DED1#A2B7A8#506E66#373E3B#FCD1A0 -->
+    <style type="text/css">
+    /*要單獨寫在home_page的style，請放在head裡面的<style>和
+    <style>裡面*/
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>About roadkill...</h1>
+    </header>
+    <div>
+        <main>
+            <article>
+                <h2>緣起</h2>
+                <p>之所以會撰寫路殺相關議題，是一位一次去科教館時，看到路殺議題的呈現，非常驚訝一起去得大家對於路殺的議題如此震驚與陌生，因為路殺這件事情，在我的記憶哩，就是從小到大被教導的事情..<br>寫這一個網站，資料來源皆為台灣動物路死觀察網，感念所有人的付出，讓路殺這件事情能漸漸出現在公眾視野，並得到重視與工程改善</p>
+            </article>
+            <article>
+                <h2>
+                    關於路殺的小知識們
+                </h2>
+                <p>路殺號發於各個角落，尤其是進入淺山地帶，當動物們與人類生活圈高度重疊時，不曉得馬路為何物?有甚麼風險的小動物們，就會蹦蹦跳跳的出現<br>然後，碰，的被撞傷或撞死在路上。</p>
+                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FYuShanNationalPark%2Fposts%2Fpfbid0paDgp6RSpCLU1ySA1Nahv3VdwCquS4s9M8XHdrpxg6is5xfjfGvQxeSBgtBnusY4l&show_text=true&width=500" width="500" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </article>
+            <article>
+                <h2>遇到路殺時的處理方式:</h2>
+            </article>
+            <section id="scroll-section">
+                <article>
+                    <h2>step1.<br>在路邊發現路死動物</h2>
+                    <p>
+                        <img src="roadkill/2.png" style="width:100%;height:100%;border-radius:30%">
+                    </p>
+                    <p>驚恐的同時，請注意自身安全，並進行下一步的回報作業！</p>
+                </article>
+                <article>
+                    <h2>step.2<br>請將他移往路邊安全、不會被再次撞到的路邊</h2>
+                    <p>
+                        <img src="roadkill/4.png" style="width:100%;height:100%;border-radius:30%">
+                    </p>
+                    <p>*二次路殺:小動物為了吃已經被路殺的遺體，而在同一處再次被撞到。</p>
+                </article>
+                <article>
+                    <h2>step.3<br>
+                        請拍下路死動物的狀態+開啟照片定位</h2>
+                    <p>
+                        <img src="roadkill/3.png" style="width:100%;height:100%;border-radius:30%">
+                    </p>
+                    <p>可以利用周圍物品作為比例尺，照片環境等呈現，幫助鑑定!</p>
+                </article>
+                <article>
+                    <h2>step.4<br>若是可以，打包遺體送至特生中心</h2>
+                    <p>
+                        <img src="roadkill/5.png" style="width:100%;height:100%;border-radius:40%">
+                    </p>
+                    <p>遺體可協助完成鑑定、了解傷勢等...</p>
+                </article>
+                <article>
+                    <h2>step.5<br>上傳資料至台灣動物路死觀察網，提供資料</h2>
+                    <p>
+                        <img src="roadkill/6.png" style="width:100%;height:100%;border-radius:40%">
+                    </p>
+                    <p>你提供的每一筆資料，都可以是保護動物的重要分析資料來源~</p>
+                </article>
+            </section>
+            <article>
+                <h2>台灣動物路殺統計</h2>
+                <div id="chart"></div>
+                <div class="tooltip" id="tooltip" style="display: none;"></div>
+                <script>
+                const data = [
+                    { species: "黑眶蟾蜍", count: 4883, info: "常見於低海拔農田，夜間活動", image: "barpic/黑眶蟾蜍.jpg" },
+                    { species: "麻雀", count: 1914, info: "多種蛙類集合，棲息於溼地", image: "barpic/麻雀.jpg" },
+                    { species: "紅鳩", count: 1571, info: "城市常見鳥種，常在人類活動區域出現", image: "barpic/紅鳩.jpg" },
+                    { species: "鼬獾", count: 908, info: "台灣常見留鳥，棲息於郊區", image: "barpic/鼬獾.jpg" },
+                    { species: "青蛇", count: 798, info: "未分類鳥類群", image: "barpic/青蛇.jpg" },
+                    { species: "斯文豪氏攀蜥", count: 748, info: "未分類鳥類群", image: "barpic/攀蜥.jpg" }
+                ];
+
+                const width = 700,
+                    height = 400,
+                    margin = { top: 40, right: 20, bottom: 50, left: 60 };
+
+                const svg = d3.select("#chart")
+                    .append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                const x = d3.scaleBand()
+                    .domain(data.map(d => d.species))
+                    .range([margin.left, width - margin.right])
+                    .padding(0.2);
+
+                const y = d3.scaleLinear()
+                    .domain([0, d3.max(data, d => d.count)]).nice()
+                    .range([height - margin.bottom, margin.top]);
+
+                // Draw bars
+                svg.selectAll("rect.bar")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                    .attr("class", "bar")
+                    .attr("x", d => x(d.species))
+                    .attr("y", d => y(d.count))
+                    .attr("width", x.bandwidth())
+                    .attr("height", d => height - margin.bottom - y(d.count))
+                    .on("mouseover", (event, d) => {
+                        d3.select("#tooltip")
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 100) + "px")
+                            .style("display", "block")
+                            .html(`
+            <strong>${d.species}</strong><br/>
+            數量：${d.count}<br/>
+            ${d.info}<br/>
+            <img class="tooltip-img" src="${d.image}" />
+          `);
+                    })
+                    .on("mouseout", () => {
+                        d3.select("#tooltip").style("display", "none");
+                    });
+
+                // X Axis
+                svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", `translate(0,${height - margin.bottom})`)
+                    .call(d3.axisBottom(x))
+
+                    .selectAll("text")
+                    .attr("transform", "rotate(-10)")
+                    .style("text-anchor", "end");
+
+                // Y Axis
+                svg.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", `translate(${margin.left},0)`)
+                    .call(d3.axisLeft(y));
+
+                // Y axis label
+                // svg.append("text")
+                // .attr("x", -(height / 2))
+                // .attr("y", 15)
+                // .attr("transform", "rotate(-90)")
+                // .attr("text-anchor", "middle")
+                // .text("路殺數量");
+                </script>
+            </article>
+            <article>
+                <h2>一些路殺的照片</h2>
+                <iframe src="html5up-lens/picture.html" width="100% " height="600"></iframe>
+            </article>
+            <article>
+                <iframe src="roadkill_interactive_map.html" width="100%" height="600"></iframe>
+            </article>
+        </main>
+        <aside>
+            <nav>
+                <!--導覽列-->
+                <ul>
+                    <li>
+                        <a href="./roadkill.html">路殺統計資料專區</a></li>
+                    <li>
+                        <a href="./mountain_experience.html">踏過的山</a></li>
+                    <!-- 要部每個經歷健一個html頁，然後在導覽頁連進去?
+         -->
+                    <li>
+                        <a href=" ./story.html  ">寫過的故事</a></li>
+                </ul>
+                <!-- 用ul讓他一行一行，這樣可以好排?* -->
+            </nav>
+        </aside>
+    </div>
+</body>
+<script>
+const scrollSection = document.getElementById('scroll-section');
+
+scrollSection.addEventListener('mouseenter', () => {
+    scrollSection.scrollBy({ left: 300, behavior: 'smooth' });
+});
+</script>
